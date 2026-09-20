@@ -42,7 +42,7 @@ export default function RestaurantPage({ params }: { params: Promise<{ id: strin
 
   if (notFound) {
     return (
-      <main className="min-h-screen bg-stone-50 text-stone-900">
+      <main className="min-h-screen bg-white text-stone-900">
         <div className="mx-auto w-full max-w-[560px] px-6 py-12">
           <p className="text-lg">Restaurant not found.</p>
         </div>
@@ -52,7 +52,7 @@ export default function RestaurantPage({ params }: { params: Promise<{ id: strin
 
   if (!data) {
     return (
-      <main className="min-h-screen bg-stone-50 text-stone-900">
+      <main className="min-h-screen bg-white text-stone-900">
         <div className="mx-auto w-full max-w-[560px] px-6 py-12">
           <p className="text-stone-500">Loading…</p>
         </div>
@@ -61,8 +61,13 @@ export default function RestaurantPage({ params }: { params: Promise<{ id: strin
   }
 
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-900">
-      <div className="mx-auto w-full max-w-[560px] px-6 py-12">
+    <main className="min-h-screen bg-white text-stone-900">
+      <header className="border-b border-stone-200">
+        <div className="mx-auto w-full max-w-[560px] px-6 py-3">
+          <span className="text-xl font-bold italic text-[#E23744]">zomato-lite</span>
+        </div>
+      </header>
+      <div className="mx-auto w-full max-w-[560px] px-6 py-8">
         <h1 className="text-3xl font-semibold">{data.name}</h1>
         <p className="mt-1 text-sm text-stone-500">
           {data.cuisine} · {data.area}
@@ -74,23 +79,23 @@ export default function RestaurantPage({ params }: { params: Promise<{ id: strin
             <p className="mt-1 text-sm text-stone-500">Be the first to review {data.name}.</p>
             <Link
               href={`/review/${id}`}
-              className="mt-4 inline-block rounded-lg bg-amber-700 px-4 py-2 text-sm font-medium text-white"
+              className="mt-4 inline-block rounded-lg bg-[#E23744] px-4 py-2 text-sm font-medium text-white"
             >
               Write the first review
             </Link>
           </div>
         ) : (
           <>
-            <div className="mt-8 flex items-baseline gap-3">
-              <p className="text-6xl font-semibold">{data.averageRating}</p>
+            <div className="mt-8 flex items-center gap-3">
+              <p className="rounded-md bg-[#E23744] px-2 py-1 text-2xl font-semibold text-white">{data.averageRating}</p>
               <p className="text-sm text-stone-500">
                 {data.totalReviews} review{data.totalReviews === 1 ? "" : "s"}
               </p>
             </div>
 
             {data.latestReview && (
-              <section aria-label="Latest review" className="mt-8 rounded-lg border border-amber-200 bg-amber-50 px-5 py-4">
-                <p className="text-xs font-medium uppercase tracking-wide text-amber-800">Latest review</p>
+              <section aria-label="Latest review" className="mt-8 rounded-lg border border-red-200 bg-red-50 px-5 py-4">
+                <p className="text-xs font-medium uppercase tracking-wide text-[#E23744]">Latest review</p>
                 <p className="mt-2 text-base">{data.latestReview.comment}</p>
                 <p className="mt-2 text-sm text-stone-500">★ {data.latestReview.rating} / 5</p>
               </section>
@@ -112,7 +117,7 @@ export default function RestaurantPage({ params }: { params: Promise<{ id: strin
 
             <Link
               href={`/review/${id}`}
-              className="mt-8 inline-block rounded-lg border border-stone-300 bg-white px-4 py-2 text-sm font-medium"
+              className="mt-8 inline-block rounded-lg bg-[#E23744] px-4 py-2 text-sm font-medium text-white"
             >
               Write a review
             </Link>

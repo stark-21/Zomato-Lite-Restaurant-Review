@@ -43,14 +43,16 @@ export default function ReviewPage({ params }: { params: Promise<{ restaurantId:
   }
 
   return (
-    <main className="min-h-screen bg-stone-50 text-stone-900">
-      <div className="mx-auto w-full max-w-[560px] px-6 py-12">
-        <p className="text-sm text-stone-500">
-          <Link href={`/restaurant/${restaurantId}`} className="underline underline-offset-4">
-            Back to restaurant
+    <main className="min-h-screen bg-white text-stone-900">
+      <header className="border-b border-stone-200">
+        <div className="mx-auto w-full max-w-[560px] px-6 py-3">
+          <Link href={`/restaurant/${restaurantId}`} className="text-xl font-bold italic text-[#E23744]">
+            zomato-lite
           </Link>
-        </p>
-        <h1 className="mt-4 text-2xl font-semibold">
+        </div>
+      </header>
+      <div className="mx-auto w-full max-w-[560px] px-6 py-8">
+        <h1 className="text-2xl font-semibold">
           {name ? `Review ${name}` : "Write a review"}
         </h1>
 
@@ -65,9 +67,9 @@ export default function ReviewPage({ params }: { params: Promise<{ restaurantId:
                 aria-checked={rating === star}
                 aria-label={`${star} star${star > 1 ? "s" : ""}`}
                 onClick={() => setRating(star)}
-                className="rounded-md px-1 text-3xl leading-none focus:outline-2 focus:outline-amber-700"
+                className="rounded-md px-1 text-3xl leading-none focus:outline-2 focus:outline-[#E23744]"
               >
-                <span className={star <= rating ? "text-amber-700" : "text-stone-300"}>
+                <span className={star <= rating ? "text-[#E23744]" : "text-stone-300"}>
                   ★
                 </span>
               </button>
@@ -85,7 +87,7 @@ export default function ReviewPage({ params }: { params: Promise<{ restaurantId:
             onChange={(e) => setComment(e.target.value)}
             rows={4}
             placeholder="What did you eat? What stood out?"
-            className="mt-2 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-base placeholder:text-stone-400 focus:border-amber-700 focus:outline-none"
+            className="mt-2 w-full rounded-lg border border-stone-300 bg-white px-3 py-2 text-base placeholder:text-stone-400 focus:border-[#E23744] focus:outline-none"
           />
         </div>
 
@@ -99,7 +101,7 @@ export default function ReviewPage({ params }: { params: Promise<{ restaurantId:
           type="button"
           onClick={onSubmit}
           disabled={!canSubmit}
-          className="mt-6 w-full rounded-lg bg-amber-700 px-4 py-3 text-base font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
+          className="mt-6 w-full rounded-lg bg-[#E23744] px-4 py-3 text-base font-medium text-white disabled:cursor-not-allowed disabled:opacity-40"
         >
           {submitting ? "Submitting…" : "Submit review"}
         </button>
